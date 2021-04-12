@@ -1,6 +1,4 @@
-# myapp
-
-fitness-app
+# fitness-app
 
 Developing a fitness app using flutter
 
