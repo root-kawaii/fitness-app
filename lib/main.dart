@@ -59,6 +59,13 @@ class _ChildState extends State<Child> {
               ),
             ),
           ),
+          SizedBox(
+            height: 12.0,
+          ),
+          Text(
+            'Did you eat Proteins : $state',
+            style: TextStyle(color: Colors.black, fontSize: 20.0),
+          ),
           Switch(
               activeColor: Colors.pinkAccent,
               value: state,
