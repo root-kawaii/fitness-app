@@ -1,4 +1,4 @@
 # fitness-app
 
-#Developing a fitness app using flutter 
-#NECTSCamp
+Developing a fitness app using flutter 
+NECTSCamp
