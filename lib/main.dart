@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -26,13 +27,46 @@ class Child extends StatefulWidget {
     this.counter,
     this.callback,
   }) : super(key: key);
+
   @override
   _ChildState createState() => _ChildState();
 }
 
 class _ChildState extends State<Child> {
   String _childState = '';
+  String name = '';
   bool state = false;
+  String controllerString = '40';
+
+  final myController = TextEditingController();
+  final myController2 = TextEditingController();
+
+  //Update controller and listen
+  @override
+  void initState() {
+    super.initState();
+
+    // Start listening to changes.
+    myController.addListener(_printLatestValue);
+    myController2.addListener(_printLatestValue2);
+  }
+
+  //Print those changes
+  _printLatestValue() {
+    print("${myController.text}");
+  }
+
+  _printLatestValue2() {
+    print("${myController2.text}");
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    myController2.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +78,7 @@ class _ChildState extends State<Child> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextField(
+              controller: myController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Enter your Name',
@@ -53,6 +88,7 @@ class _ChildState extends State<Child> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
             child: TextFormField(
+              controller: myController2,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Enter your Kcal goals',
@@ -93,6 +129,8 @@ class _ChildState extends State<Child> {
                   onPressed: () {
                     this.widget.callback(
                         this.widget.counter + 10); //here is your callback
+                    print(this.widget.counter.toString());
+                    print(controllerString);
                     setState(() {
                       _childState = "plus ten";
                     });
@@ -113,6 +151,7 @@ class Parent extends StatefulWidget {
 
 class _ParentState extends State<Parent> {
   int _counter = 0;
+  int check;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
