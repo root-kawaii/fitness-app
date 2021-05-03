@@ -1,51 +1,73 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-typedef void ResultCallback(List giorgio);
-
-class CalorieForm extends StatefulWidget {
-  CalorieForm({Key key, this.submitResult}) : super(key: key);
-  final ResultCallback submitResult;
-
-  @override
-  _CalorieFormState createState() => _CalorieFormState();
-}
-
-class _CalorieFormState extends State<CalorieForm> {
-  final nameController = TextEditingController();
-  final caloriesController = TextEditingController();
-
-  //_printLatestValue() => print(nameController.text);
-
-  @override
-  void initState() {
-    super.initState();
-
-    //nameController.addListener(_printLatestValue);
-  }
-
-  void submit() =>
-      this.widget.submitResult([nameController.text, caloriesController.text]);
-
+class NewPage extends StatelessWidget {
+  final String title;
+  NewPage(this.title);
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      children: [
-        TextField(controller: nameController),
-        TextField(controller: caloriesController),
-        TextButton(onPressed: submit, child: const Text('XO'))
-      ],
-    ));
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(title),
+      ),
+      body: Center(child: Text("I belongs to $title"))
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lesson 19'),
+      ),
+      body: Container(
+        child: Center(
+          child: Text("Default Scaffold Body"),
+        ),
+      ),
+      drawer: _myDrawerWithAccountHeader(context);
   }
 
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    nameController.dispose();
-    caloriesController.dispose();
-    super.dispose();
-  }
+
+Widget _myDrawerWithAccountHeader(BuildContext context) {
+  return Drawer(
+    child: ListView(
+      children: <Widget>[
+        UserAccountsDrawerHeader(
+          accountName: Text("Antedesk"),
+          accountEmail: Text("myawesomeemail@example.it"),
+          currentAccountPicture: CircleAvatar(
+            backgroundColor: Colors.grey[200],
+            child: Icon(Icons.person, size: 60),
+          ),
+        ),
+        ListTile(
+          leading: Icon(Icons.mail),
+          title: Text('Item 1'),
+          onTap: () {
+            print('Item 1');
+          },
+        ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.view_agenda),
+          title: Text('Item 2'),
+          onTap: () {
+            print('Item 2');
+          },
+        ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.local_cafe),
+          title: Text('Item 3'),
+          onTap: () {
+            print('Item 3');
+          },
+        ),
+      ],
+    ),
+  );
 }
 
 void main() {
@@ -53,9 +75,7 @@ void main() {
     MaterialApp(
       home: Scaffold(
         body: Center(
-          child: CalorieForm(
-            submitResult: (List res) => print(res),
-          ),
+          child: _myDrawerWithAccountHeader();
         ),
       ),
     ),

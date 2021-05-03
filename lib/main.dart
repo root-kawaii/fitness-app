@@ -1,181 +1,288 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final appTitle = 'Welcome, User!';
+
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'NECST Fitness Demo';
     return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(appTitle),
-        ),
-        body: Parent(),
+      theme: new ThemeData(
+        canvasColor: Colors.green[100],
       ),
+      title: appTitle,
+      home: MyHomePage(title: appTitle),
     );
   }
 }
 
-class Child extends StatefulWidget {
-  final int counter;
-  final Function(int childCounter) callback; //here is your callback
-  const Child({
-    Key key,
-    this.counter,
-    this.callback,
-  }) : super(key: key);
-
-  @override
-  _ChildState createState() => _ChildState();
-}
-
-class _ChildState extends State<Child> {
-  String _childState = '';
-  String name = '';
-  bool state = false;
-  String controllerString = '40';
-
-  final myController = TextEditingController();
-  final myController2 = TextEditingController();
-
-  //Update controller and listen
-  @override
-  void initState() {
-    super.initState();
-
-    // Start listening to changes.
-    myController.addListener(_printLatestValue);
-    myController2.addListener(_printLatestValue2);
-  }
-
-  //Print those changes
-  _printLatestValue() {
-    print("${myController.text}");
-  }
-
-  _printLatestValue2() {
-    print("${myController2.text}");
-  }
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    myController2.dispose();
-    super.dispose();
-  }
-
+class NewPage extends StatelessWidget {
+  final String title;
+  NewPage(this.title);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.cyan[200],
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: TextField(
-              controller: myController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter your Name',
-              ),
+    return new Scaffold(
+        appBar: new AppBar(
+          foregroundColor: Colors.green[200],
+          backgroundColor: Colors.green[200],
+          title: new Text(title),
+        ),
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(
+              height: 15,
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: TextFormField(
-              controller: myController2,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter your Kcal goals',
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 12.0,
-          ),
-          Text(
-            'Did you eat Proteins : $state',
-            style: TextStyle(color: Colors.black, fontSize: 20.0),
-          ),
-          Switch(
-              activeColor: Colors.pinkAccent,
-              value: state,
-              onChanged: (value) {
-                print("VALUE : $value");
-                setState(() {
-                  state = value;
-                });
-              }),
-          Text("Increment your Kcal"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                  icon: Icon(Icons.expand_more_sharp),
-                  onPressed: () {
-                    this.widget.callback(
-                        this.widget.counter - 10); //here is your callback
-                    setState(() {
-                      _childState = "minus ten";
-                    });
-                  }),
-              IconButton(
-                  icon: Icon(Icons.expand_less_sharp),
-                  onPressed: () {
-                    this.widget.callback(
-                        this.widget.counter + 10); //here is your callback
-                    print(this.widget.counter.toString());
-                    print(controllerString);
-                    setState(() {
-                      _childState = "plus ten";
-                    });
-                  })
-            ],
-          ),
-          Text(_childState)
-        ],
-      ),
-    );
+            LinearProgressIndicator(),
+          ],
+        )));
   }
 }
 
-class Parent extends StatefulWidget {
+class ProfilePage extends StatelessWidget {
+  final String title;
+  ProfilePage(this.title);
   @override
-  _ParentState createState() => _ParentState();
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          foregroundColor: Colors.green[200],
+          backgroundColor: Colors.green[200],
+          title: new Text(title),
+        ),
+        body: Center(
+            child: Container(
+                margin: EdgeInsets.only(top: 120, bottom: 120, left: 300),
+                //padding: EdgeInsets.only(top: 120),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(120.0),
+                        child: new LinearPercentIndicator(
+                          width: 140.0,
+                          lineHeight: 14.0,
+                          percent: 0.5,
+                          center: Text(
+                            "50.0%",
+                            style: new TextStyle(fontSize: 12.0),
+                          ),
+                          //trailing: Icon(Icons.mood),
+                          linearStrokeCap: LinearStrokeCap.roundAll,
+                          backgroundColor: Colors.grey,
+                          progressColor: Colors.blue,
+                        ),
+                      ),
+                    ]))));
+  }
 }
 
-class _ParentState extends State<Parent> {
-  int _counter = 0;
-  int check;
+class FoodPage extends StatelessWidget {
+  final String title1;
+  FoodPage(this.title1);
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          foregroundColor: Colors.green[200],
+          backgroundColor: Colors.green[200],
+          title: new Text(title1),
+        ),
+        body: Center(
+          child: Container(
+            child: SfRadialGauge(axes: <RadialAxis>[
+              RadialAxis(
+                annotations: <GaugeAnnotation>[
+                  GaugeAnnotation(
+                      positionFactor: 0.1,
+                      angle: 90,
+                      widget: Text(
+                        20.toStringAsFixed(0) + ' / 100',
+                        style: TextStyle(fontSize: 11),
+                      ))
+                ],
+                pointers: <GaugePointer>[
+                  RangePointer(
+                    value: 20,
+                    cornerStyle: CornerStyle.bothCurve,
+                    width: 0.2,
+                    sizeUnit: GaugeSizeUnit.factor,
+                  )
+                ],
+                minimum: 0,
+                maximum: 100,
+                showLabels: false,
+                showTicks: false,
+                axisLineStyle: AxisLineStyle(
+                  thickness: 0.2,
+                  cornerStyle: CornerStyle.bothCurve,
+                  color: Color.fromARGB(30, 0, 169, 181),
+                  thicknessUnit: GaugeSizeUnit.factor,
+                ),
+              )
+            ]),
+          ),
+        ));
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  final String title;
+
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Kcal Counter"),
+        title: Center(child: Text(title)),
+        //foregroundColor: Colors.green[200],
+        backgroundColor: Colors.green[200],
       ),
-      body: Container(
-        color: Colors.indigo[100],
-        child: Column(
-          children: [
-            Child(
-              counter: _counter,
-              callback: (childCounter) {
-                //here is callback from the child
-                print(childCounter);
-                setState(() {
-                  _counter = childCounter;
-                });
-              },
+      body: Center(child: Text('This is our app...')),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            new Container(
+              color: Colors.green[200],
+              child: new Column(
+                children: [
+                  DrawerHeader(
+                    //accountName: Text("matteo_regge"),
+                    //accountEmail: Text("teo.regge.99@gmail.com"),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.green[100],
+                      foregroundColor: Colors.blue[200],
+                      child: Icon(Icons.person, size: 30),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Text("Kcal"),
-            Center(
-              child: Text(_counter.toString()),
-            )
+            new Container(
+              color: Colors.green[100],
+              child: new Column(
+                children: [
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Profile'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) =>
+                                  new ProfilePage('Profile')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Food'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new FoodPage('Food')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Training'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new NewPage('Training')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Stress'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new NewPage('Stress')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Sleep'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new NewPage('Sleep')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Feedback'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new NewPage('Feedback')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Blog'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new NewPage('Blog')));
+                    },
+                  ),
+                  ListTile(
+                    //tileColor: Colors.green[300],
+                    leading: Icon(Icons.label_sharp),
+                    title: Text('Settings'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new NewPage('Settings')));
+                    },
+                  ),
+                  Divider(),
+                  ListTile(
+                    trailing: Icon(Icons.close),
+                    title: Text('Close'),
+                    onTap: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              //decoration: BoxDecoration(color: Colors.green[200]),
+              color: Colors.blue[100],
+            ),
           ],
         ),
       ),
