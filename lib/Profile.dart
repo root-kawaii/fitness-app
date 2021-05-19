@@ -15,8 +15,8 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          foregroundColor: Colors.green[200],
-          backgroundColor: Colors.green[200],
+          foregroundColor: Colors.teal[800],
+          backgroundColor: Colors.teal[800],
         ),
         drawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
@@ -27,28 +27,30 @@ class _ProfileState extends State<Profile> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               new Container(
-                color: Colors.green[200],
+                color: Colors.teal[800],
                 child: new Column(
                   children: [
                     DrawerHeader(
                       //accountName: Text("matteo_regge"),
                       //accountEmail: Text("teo.regge.99@gmail.com"),
                       child: CircleAvatar(
-                        backgroundColor: Colors.green[100],
+                        backgroundColor: Colors.yellow[800],
                         foregroundColor: Colors.blue[200],
-                        child: Icon(Icons.person, size: 30),
+                        child: Icon(Icons.person_sharp, size: 30),
                       ),
                     ),
                   ],
                 ),
               ),
               new Container(
-                color: Colors.green[100],
+                color: Colors.teal[800],
                 child: new Column(
                   children: [
                     ListTile(
                       //tileColor: Colors.green[300],
                       leading: Icon(Icons.label_sharp),
+                      //doesn't work for now
+                      //hoverColor: Colors.blue[200],
                       title: Text('Profile'),
                       onTap: () {
                         Navigator.pop(context);
