@@ -4,6 +4,13 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Food.dart';
+import 'Blog.dart';
+import 'Settings.dart';
+import 'Sleep.dart';
+import 'Stress.dart';
+import 'Training.dart';
+import 'Profile.dart';
+import 'Home.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -14,10 +21,6 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          foregroundColor: Colors.teal[800],
-          backgroundColor: Colors.teal[800],
-        ),
         drawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical
@@ -57,7 +60,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Food()));
+                                builder: (context) => Profile()));
                       },
                     ),
                     ListTile(
@@ -81,7 +84,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Food()));
+                                builder: (context) => Training()));
                       },
                     ),
                     ListTile(
@@ -93,7 +96,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Food()));
+                                builder: (context) => Stress()));
                       },
                     ),
                     ListTile(
@@ -105,19 +108,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Food()));
-                      },
-                    ),
-                    ListTile(
-                      //tileColor: Colors.green[300],
-                      leading: Icon(Icons.label_sharp),
-                      title: Text('Feedback'),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => Food()));
+                                builder: (context) => Sleep()));
                       },
                     ),
                     ListTile(
@@ -129,7 +120,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Food()));
+                                builder: (context) => Blog()));
                       },
                     ),
                     ListTile(
@@ -141,7 +132,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Food()));
+                                builder: (context) => Settings()));
                       },
                     ),
                     Divider(),
@@ -159,6 +150,10 @@ class _ProfileState extends State<Profile> {
               ),
             ],
           ),
+        ),
+        appBar: new AppBar(
+          foregroundColor: Colors.teal[800],
+          backgroundColor: Colors.teal[800],
         ),
         body: Padding(
           padding: EdgeInsets.all(80),

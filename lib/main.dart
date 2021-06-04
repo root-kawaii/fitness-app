@@ -10,6 +10,7 @@ import 'Sleep.dart';
 import 'Stress.dart';
 import 'Training.dart';
 import 'Profile.dart';
+import 'Home.dart';
 
 /// Flutter code sample for BottomNavigationBar
 
@@ -55,15 +56,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   final List<Widget> _children = [
-    Profile(),
+    Home(),
     Food(),
     Training(),
     Sleep(),
-    Settings(),
+    Stress()
   ];
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Profile',
+      'Index 0: Home',
       style: optionStyle,
     ),
     Text(
@@ -79,7 +80,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       style: optionStyle,
     ),
     Text(
-      'Index 4: Settings',
+      'Index 4: Stress',
       style: optionStyle,
     ),
   ];
@@ -100,7 +101,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Profile',
+            label: 'Home',
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
@@ -119,8 +120,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.person_rounded),
+            label: 'Stress',
             backgroundColor: Colors.pink,
           ),
         ],
