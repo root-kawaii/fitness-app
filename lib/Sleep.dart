@@ -21,9 +21,10 @@ class _SleepState extends State<Sleep> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.blue[100],
       appBar: new AppBar(
-        foregroundColor: Colors.green[200],
-        backgroundColor: Colors.green[200],
+        foregroundColor: Colors.blue,
+        backgroundColor: Colors.blue,
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll

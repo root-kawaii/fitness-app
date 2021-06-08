@@ -21,42 +21,74 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.red[100],
       appBar: new AppBar(
-        foregroundColor: Colors.green[200],
-        backgroundColor: Colors.green[200],
+        foregroundColor: Colors.red[400],
+        backgroundColor: Colors.red[400],
       ),
       body: Center(
           child: ListView(children: <Widget>[
-        Center(
-            heightFactor: 2,
-            widthFactor: 2,
-            child: CircleAvatar(
-              backgroundColor: Colors.yellow[800],
-              foregroundColor: Colors.blue[200],
-              child: Icon(Icons.person_sharp, size: 30),
-              radius: 50,
-            )),
-        Container(
-          child: Text('Less Boring'),
-          margin: const EdgeInsets.all(20.0),
-          color: Colors.green[600],
-          width: 48.0,
-          height: 48.0,
+        SizedBox(
+          //Use of SizedBox
+          height: 40,
         ),
-        Container(
-          child: Text('Less Boring'),
-          margin: const EdgeInsets.all(20.0),
-          color: Colors.green[600],
-          width: 48.0,
-          height: 48.0,
+        new CircularPercentIndicator(
+          radius: 200.0,
+          lineWidth: 30.0,
+          percent: 0.66,
+          header: new Text("Goal"),
+          center: new Icon(
+            Icons.person,
+            size: 40.0,
+            color: Colors.blue,
+          ),
+          backgroundColor: Colors.yellow[100],
+          progressColor: Colors.blue,
         ),
-        Container(
-          child: Text('Less Boring'),
-          margin: const EdgeInsets.all(20.0),
-          color: Colors.green[600],
-          width: 48.0,
-          height: 48.0,
-        )
+        SizedBox(
+          //Use of SizedBox
+          height: 30,
+        ),
+        Card(
+          color: Colors.green[200],
+          child: ListTile(
+            title: Text(
+                '   Food                                                                    45%'),
+          ),
+        ),
+        SizedBox(
+          //Use of SizedBox
+          height: 30,
+        ),
+        Card(
+          color: Colors.purple[200],
+          child: ListTile(
+            title: Text(
+                '   Training                                                              73%'),
+          ),
+        ),
+        SizedBox(
+          //Use of SizedBox
+          height: 30,
+        ),
+        Card(
+          color: Colors.blue[200],
+          child: ListTile(
+            title: Text(
+                '   Sleep                                                                  82%'),
+          ),
+        ),
+        SizedBox(
+          //Use of SizedBox
+          height: 30,
+        ),
+        Card(
+          color: Colors.pink[200],
+          child: ListTile(
+            title: Text(
+                '   Stress                                                               62%'),
+          ),
+        ),
       ])),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -74,9 +106,10 @@ class _HomeState extends State<Home> {
                     //accountName: Text("matteo_regge"),
                     //accountEmail: Text("teo.regge.99@gmail.com"),
                     child: CircleAvatar(
+                      radius: 60,
                       backgroundColor: Colors.yellow[800],
                       foregroundColor: Colors.blue[200],
-                      child: Icon(Icons.person_sharp, size: 30),
+                      child: Icon(Icons.person_sharp, size: 60),
                     ),
                   ),
                 ],
@@ -94,17 +127,29 @@ class _HomeState extends State<Home> {
                           'BMI                                        20,5'),
                     ),
                   ),
+                  Divider(
+                    height: 20,
+                    thickness: 1,
+                  ),
                   Card(
                     color: Colors.green[200],
                     child: ListTile(
                       title: Text('Maximum Frequency              200'),
                     ),
                   ),
+                  Divider(
+                    height: 20,
+                    thickness: 1,
+                  ),
                   Card(
                     color: Colors.green[200],
                     child: ListTile(
                       title: Text('Lean Mass                             36,6'),
                     ),
+                  ),
+                  Divider(
+                    height: 20,
+                    thickness: 1,
                   ),
                   Card(
                     color: Colors.green[200],
@@ -113,6 +158,21 @@ class _HomeState extends State<Home> {
                           Text('Waist Circ                             70cm'),
                     ),
                   ),
+                  Divider(
+                    height: 20,
+                    thickness: 1,
+                  ),
+                  Card(
+                    color: Colors.green[200],
+                    child: ListTile(
+                      title:
+                          Text('Waist Circ                             70cm'),
+                    ),
+                  ),
+                  Divider(
+                    height: 20,
+                    thickness: 1,
+                  ),
                   Card(
                     color: Colors.green[200],
                     child: ListTile(
@@ -120,7 +180,11 @@ class _HomeState extends State<Home> {
                       title: Text('Close'),
                       onTap: () => Navigator.pop(context),
                     ),
-                  )
+                  ),
+                  Divider(
+                    height: 100,
+                    thickness: 1,
+                  ),
                 ],
               ),
             ),

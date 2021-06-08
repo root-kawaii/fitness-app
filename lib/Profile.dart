@@ -49,6 +49,9 @@ class _ProfileState extends State<Profile> {
                 color: Colors.teal[800],
                 child: new Column(
                   children: [
+                    Divider(
+                      height: 30,
+                    ),
                     ListTile(
                       //tileColor: Colors.green[300],
                       leading: Icon(Icons.label_sharp),
@@ -63,6 +66,9 @@ class _ProfileState extends State<Profile> {
                                 builder: (context) => Profile()));
                       },
                     ),
+                    Divider(
+                      height: 30,
+                    ),
                     ListTile(
                       //tileColor: Colors.green[300],
                       leading: Icon(Icons.label_sharp),
@@ -75,6 +81,9 @@ class _ProfileState extends State<Profile> {
                                 builder: (context) => Food()));
                       },
                     ),
+                    Divider(
+                      height: 30,
+                    ),
                     ListTile(
                       //tileColor: Colors.green[300],
                       leading: Icon(Icons.label_sharp),
@@ -86,6 +95,10 @@ class _ProfileState extends State<Profile> {
                             new MaterialPageRoute(
                                 builder: (context) => Training()));
                       },
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
                     ),
                     ListTile(
                       //tileColor: Colors.green[300],
@@ -100,6 +113,15 @@ class _ProfileState extends State<Profile> {
                       },
                     ),
                     ListTile(
+                      tileColor: Colors.green[800],
+                      leading: Icon(Icons.label_sharp),
+                      title: Text('Stress'),
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
+                    ),
+                    ListTile(
                       //tileColor: Colors.green[300],
                       leading: Icon(Icons.label_sharp),
                       title: Text('Sleep'),
@@ -110,6 +132,10 @@ class _ProfileState extends State<Profile> {
                             new MaterialPageRoute(
                                 builder: (context) => Sleep()));
                       },
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
                     ),
                     ListTile(
                       //tileColor: Colors.green[300],
@@ -122,6 +148,10 @@ class _ProfileState extends State<Profile> {
                             new MaterialPageRoute(
                                 builder: (context) => Blog()));
                       },
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 1,
                     ),
                     ListTile(
                       //tileColor: Colors.green[300],

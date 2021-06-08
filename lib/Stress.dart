@@ -21,9 +21,10 @@ class _StressState extends State<Stress> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.pink[100],
       appBar: new AppBar(
-        foregroundColor: Colors.green[200],
-        backgroundColor: Colors.green[200],
+        foregroundColor: Colors.pink,
+        backgroundColor: Colors.pink,
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -146,6 +147,37 @@ class _StressState extends State<Stress> {
               //decoration: BoxDecoration(color: Colors.green[200]),
               color: Colors.blue[100],
             ),
+            Padding(
+              padding: EdgeInsets.all(80),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  RotatedBox(
+                    quarterTurns: -1,
+                    child: LinearProgressIndicator(
+                      value: 0.12,
+                    ),
+                  ),
+                  RotatedBox(
+                    quarterTurns: -1,
+                    child: LinearProgressIndicator(
+                      value: 0.42,
+                      valueColor: AlwaysStoppedAnimation(Colors.orange),
+                      backgroundColor: Colors.blue,
+                    ),
+                  ),
+                  RotatedBox(
+                    quarterTurns: 1,
+                    child: LinearProgressIndicator(
+                      minHeight: 20,
+                      value: 0.89,
+                      valueColor: AlwaysStoppedAnimation(Colors.purple),
+                      backgroundColor: Colors.lime,
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

@@ -11,6 +11,8 @@ import 'Stress.dart';
 import 'Training.dart';
 import 'Profile.dart';
 import 'Home.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class Blog extends StatefulWidget {
   @override
@@ -145,6 +147,7 @@ class _BlogState extends State<Blog> {
             Container(
               //decoration: BoxDecoration(color: Colors.green[200]),
               color: Colors.blue[100],
+              height: 200,
             ),
           ],
         ),

@@ -14,6 +14,7 @@ import 'Stress.dart';
 import 'Training.dart';
 import 'Profile.dart';
 import 'Home.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Food extends StatefulWidget {
   @override
@@ -21,6 +22,7 @@ class Food extends StatefulWidget {
 }
 
 class _FoodState extends State<Food> {
+  double _currentSliderValue = 0;
   @override
   Widget build(BuildContext context) {
     String text = '12';
@@ -28,9 +30,10 @@ class _FoodState extends State<Food> {
     final myController = TextEditingController();
 
     return new Scaffold(
+        backgroundColor: Colors.green[200],
         appBar: new AppBar(
-          foregroundColor: Colors.green[200],
-          backgroundColor: Colors.green[200],
+          foregroundColor: Colors.green,
+          backgroundColor: Colors.green,
         ),
         drawer: Drawer(
           // Add a ListView to the drawer. This ensures the user can scroll
@@ -164,32 +167,102 @@ class _FoodState extends State<Food> {
         ),
         body: Center(
           child: ListView(children: <Widget>[
-            Center(
-              child: Container(
-                child: CheckboxListTile(
-                  title: const Text('Proteins'),
-                  value: timeDilation != 1.0,
-                  onChanged: (bool? value2) {
-                    setState(() {
-                      timeDilation = value2! ? 2.0 : 1.0;
-                    });
-                  },
-                  secondary: const Icon(Icons.food_bank),
-                ),
-              ),
+            Container(
+              height: 150,
+              color: Colors.transparent,
+              margin: new EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              child: new Container(
+                  decoration: new BoxDecoration(
+                      color: Colors.teal,
+                      borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(20.0),
+                        topRight: const Radius.circular(20.0),
+                        bottomLeft: const Radius.circular(20.0),
+                        bottomRight: const Radius.circular(20.0),
+                      )),
+                  child: new Center(
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new CircularPercentIndicator(
+                          radius: 70.0,
+                          lineWidth: 7.0,
+                          percent: 0.10,
+                          center: new Text("Breakfast"),
+                          progressColor: Colors.red,
+                        ),
+                        new Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        ),
+                        new CircularPercentIndicator(
+                          radius: 70.0,
+                          lineWidth: 7.0,
+                          percent: 0.30,
+                          center: new Text("Lunch"),
+                          progressColor: Colors.orange,
+                        ),
+                        new Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        ),
+                        new CircularPercentIndicator(
+                          radius: 70.0,
+                          lineWidth: 7.0,
+                          percent: 0.60,
+                          center: new Text("Dinner"),
+                          progressColor: Colors.yellow,
+                        ),
+                        new Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        ),
+                        new CircularPercentIndicator(
+                          radius: 70.0,
+                          lineWidth: 7.0,
+                          percent: 0.90,
+                          center: new Text("Snacks"),
+                          progressColor: Colors.green,
+                        )
+                      ],
+                    ),
+                  )),
             ),
-            Center(
-              child: Container(
-                  child: CheckboxListTile(
-                title: const Text('Carbohydrates'),
-                value: timeDilation != 1.0,
-                onChanged: (bool? value2) {
-                  setState(() {
-                    timeDilation = value2! ? 2.0 : 1.0;
-                  });
-                },
-                secondary: const Icon(Icons.food_bank),
-              )),
+            Container(
+              height: 150,
+              color: Colors.transparent,
+              margin: new EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              child: new Container(
+                  decoration: new BoxDecoration(
+                      color: Colors.teal,
+                      borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(20.0),
+                        topRight: const Radius.circular(20.0),
+                        bottomLeft: const Radius.circular(20.0),
+                        bottomRight: const Radius.circular(20.0),
+                      )),
+                  child: new Center(
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new CircularPercentIndicator(
+                          radius: 90.0,
+                          lineWidth: 10.0,
+                          percent: 0.60,
+                          center: new Text("Caffeine",
+                              style: GoogleFonts.openSansCondensed()),
+                          progressColor: Colors.yellow,
+                        ),
+                        new Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        ),
+                        new CircularPercentIndicator(
+                          radius: 90.0,
+                          lineWidth: 10.0,
+                          percent: 0.90,
+                          center: new Text("Water"),
+                          progressColor: Colors.green,
+                        )
+                      ],
+                    ),
+                  )),
             ),
             new CircularPercentIndicator(
               radius: 100.0,
@@ -288,7 +361,20 @@ class _FoodState extends State<Food> {
                     percent: 0.90,
                     center: new Text("90%"),
                     progressColor: Colors.green,
-                  )
+                  ),
+                  Container(
+                      child: Slider(
+                    value: _currentSliderValue,
+                    min: 0,
+                    max: 100,
+                    divisions: 5,
+                    label: _currentSliderValue.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value;
+                      });
+                    },
+                  ))
                 ],
               ),
             )
