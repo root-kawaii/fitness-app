@@ -247,53 +247,44 @@ class _TrainingState extends State<Training> {
               height: 300.0,
               color: Colors.transparent,
               child: new Container(
-                decoration: new BoxDecoration(
-                    color: Colors.blue[200],
-                    borderRadius: new BorderRadius.only(
-                      topLeft: const Radius.circular(40.0),
-                      topRight: const Radius.circular(40.0),
-                      bottomLeft: const Radius.circular(40.0),
-                      bottomRight: const Radius.circular(40.0),
-                    )),
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    new Column(children: <Widget>[
+                  decoration: new BoxDecoration(
+                      color: Colors.blue[200],
+                      borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(40.0),
+                        topRight: const Radius.circular(40.0),
+                        bottomLeft: const Radius.circular(40.0),
+                        bottomRight: const Radius.circular(40.0),
+                      )),
+                  child: new Column(
+                    children: <Widget>[
                       Divider(
                         height: 20,
                       ),
                       new Text(
-                        'How much stress',
+                        'Steps',
                         textScaleFactor: 1.2,
                         style: GoogleFonts.vollkornSc(),
                       ),
-                      new Text(
-                        'did you feel',
-                        textScaleFactor: 1.2,
-                        style: GoogleFonts.vollkornSc(),
-                      )
-                    ]),
-                    new Column(children: <Widget>[
                       Divider(
                         height: 20,
                       ),
-                      Container(
-                          child: Slider(
-                        value: _currentSliderValue,
-                        min: 0,
-                        max: 100,
-                        divisions: 5,
-                        label: _currentSliderValue.round().toString(),
-                        onChanged: (double value) {
-                          setState(() {
-                            _currentSliderValue = value;
-                          });
-                        },
-                      ))
-                    ]),
-                  ],
-                ),
-              )),
+                      new CircularPercentIndicator(
+                        radius: 150.0,
+                        lineWidth: 15.0,
+                        percent: 0.90,
+                        center: new Icon(Icons.person),
+                        progressColor: Colors.green,
+                      ),
+                      Divider(
+                        height: 20,
+                      ),
+                      new Text(
+                        'Keep walking to improve your steps score!',
+                        textScaleFactor: 1.2,
+                        style: GoogleFonts.vollkornSc(),
+                      ),
+                    ],
+                  ))),
         ])));
   }
 }

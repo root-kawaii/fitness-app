@@ -23,6 +23,9 @@ class Food extends StatefulWidget {
 
 class _FoodState extends State<Food> {
   double _currentSliderValue = 0;
+  double sliderValue = 0;
+  double sliderValue2 = 0;
+  double sliderValue3 = 0;
   @override
   Widget build(BuildContext context) {
     String text = '12';
@@ -247,7 +250,7 @@ class _FoodState extends State<Food> {
                           lineWidth: 10.0,
                           percent: 0.60,
                           center: new Text("Caffeine",
-                              style: GoogleFonts.openSansCondensed()),
+                              style: GoogleFonts.vollkornSc()),
                           progressColor: Colors.yellow,
                         ),
                         new Padding(
@@ -264,120 +267,128 @@ class _FoodState extends State<Food> {
                     ),
                   )),
             ),
-            new CircularPercentIndicator(
-              radius: 100.0,
-              lineWidth: 10.0,
-              percent: 0.8,
-              header: new Text("Icon header"),
-              center: new Icon(
-                Icons.person_pin,
-                size: 50.0,
-                color: Colors.blue,
-              ),
-              backgroundColor: Colors.grey,
-              progressColor: Colors.blue,
-            ),
-            new CircularPercentIndicator(
-              radius: 130.0,
-              animation: true,
-              animationDuration: 1200,
-              lineWidth: 15.0,
-              percent: 0.4,
-              center: new Text(
-                "40 hours",
-                style:
-                    new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-              ),
-              circularStrokeCap: CircularStrokeCap.butt,
-              backgroundColor: Colors.yellow,
-              progressColor: Colors.red,
-            ),
-            new CircularPercentIndicator(
-              radius: 120.0,
-              lineWidth: 13.0,
-              animation: true,
-              percent: 0.7,
-              center: new Text(
-                "70.0%",
-                style:
-                    new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-              ),
-              footer: new Text(
-                "Sales this week",
-                style:
-                    new TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-              ),
-              circularStrokeCap: CircularStrokeCap.round,
-              progressColor: Colors.purple,
-            ),
-            Padding(
-              padding: EdgeInsets.all(15.0),
-              child: new CircularPercentIndicator(
-                radius: 60.0,
-                lineWidth: 5.0,
-                percent: 1.0,
-                center: new Text("100%"),
-                progressColor: Colors.green,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(15.0),
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new CircularPercentIndicator(
-                    radius: 45.0,
-                    lineWidth: 4.0,
-                    percent: 0.10,
-                    center: new Text("10%"),
-                    progressColor: Colors.red,
+            new Container(
+                height: 300.0,
+                color: Colors.transparent,
+                child: new Container(
+                  decoration: new BoxDecoration(
+                      color: Colors.teal,
+                      borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(40.0),
+                        topRight: const Radius.circular(40.0),
+                        bottomLeft: const Radius.circular(40.0),
+                        bottomRight: const Radius.circular(40.0),
+                      )),
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Column(children: <Widget>[
+                        Divider(
+                          height: 20,
+                        ),
+                        new Text('Carbs',
+                            textScaleFactor: 1.4,
+                            style: new TextStyle(
+                                fontFamily: 'Helvetica', color: Colors.orange)),
+                        Divider(
+                          height: 40,
+                        ),
+                        new Text('Fruits',
+                            textScaleFactor: 1.4,
+                            style: new TextStyle(
+                                fontFamily: 'Helvetica', color: Colors.orange)),
+                        Divider(
+                          height: 40,
+                        ),
+                        new Text('Vegetables',
+                            textScaleFactor: 1.4,
+                            style: new TextStyle(
+                                fontFamily: 'Helvetica', color: Colors.orange)),
+                        Divider(
+                          height: 40,
+                        ),
+                        new Text('Proteins',
+                            textScaleFactor: 1.4,
+                            style: new TextStyle(
+                                fontFamily: 'Helvetica', color: Colors.orange)),
+                      ]),
+                      new Column(children: <Widget>[
+                        Divider(
+                          height: 10,
+                        ),
+                        Container(
+                            child: Slider(
+                          activeColor: Colors.yellow,
+                          inactiveColor: Colors.orange,
+                          value: _currentSliderValue,
+                          min: 0,
+                          max: 100,
+                          divisions: 2,
+                          label: _currentSliderValue.round().toString(),
+                          onChanged: (double value) {
+                            setState(() {
+                              _currentSliderValue = value;
+                            });
+                          },
+                        )),
+                        Divider(
+                          height: 15,
+                        ),
+                        Container(
+                            child: Slider(
+                          activeColor: Colors.yellow,
+                          inactiveColor: Colors.orange,
+                          value: sliderValue,
+                          min: 0,
+                          max: 100,
+                          divisions: 2,
+                          label: sliderValue.round().toString(),
+                          onChanged: (double value) {
+                            setState(() {
+                              sliderValue = value;
+                            });
+                          },
+                        )),
+                        Divider(
+                          height: 15,
+                        ),
+                        Container(
+                            child: Slider(
+                          activeColor: Colors.yellow,
+                          inactiveColor: Colors.orange,
+                          value: sliderValue2,
+                          min: 0,
+                          max: 100,
+                          divisions: 2,
+                          label: sliderValue2.round().toString(),
+                          onChanged: (double value) {
+                            setState(() {
+                              sliderValue2 = value;
+                            });
+                          },
+                        )),
+                        Divider(
+                          height: 15,
+                        ),
+                        Container(
+                            child: Slider(
+                          activeColor: Colors.yellow,
+                          inactiveColor: Colors.orange,
+                          value: sliderValue3,
+                          min: 0,
+                          max: 100,
+                          divisions: 2,
+                          label: sliderValue3.round().toString(),
+                          onChanged: (double value) {
+                            setState(() {
+                              sliderValue3 = value;
+                            });
+                          },
+                        ))
+                      ]),
+                    ],
                   ),
-                  new Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  ),
-                  new CircularPercentIndicator(
-                    radius: 45.0,
-                    lineWidth: 4.0,
-                    percent: 0.30,
-                    center: new Text("30%"),
-                    progressColor: Colors.orange,
-                  ),
-                  new Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  ),
-                  new CircularPercentIndicator(
-                    radius: 45.0,
-                    lineWidth: 4.0,
-                    percent: 0.60,
-                    center: new Text("60%"),
-                    progressColor: Colors.yellow,
-                  ),
-                  new Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  ),
-                  new CircularPercentIndicator(
-                    radius: 45.0,
-                    lineWidth: 4.0,
-                    percent: 0.90,
-                    center: new Text("90%"),
-                    progressColor: Colors.green,
-                  ),
-                  Container(
-                      child: Slider(
-                    value: _currentSliderValue,
-                    min: 0,
-                    max: 100,
-                    divisions: 5,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _currentSliderValue = value;
-                      });
-                    },
-                  ))
-                ],
-              ),
-            )
+                )),
           ]),
         ));
   }
