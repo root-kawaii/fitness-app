@@ -1,3 +1,5 @@
+/*
+
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -529,3 +531,4 @@ int _selectedIndex = 0;
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+      */
